@@ -1,0 +1,105 @@
+﻿@model IP_Final.Models.Domain.Software
+@using IP_Final.Lib
+
+@{
+    int license_code = Model.cat_code - Model.os_code + Model.lang_code;
+    if(license_code < 0)
+    {
+        license_code = -license_code;
+    }
+    else if(license_code == 0)
+    {
+        license_code = 2;
+    }
+
+    if(license_code > 3)
+    {
+        license_code = 1;
+    }
+
+}
+
+<div class="content-banner">
+    
+</div>
+
+<div class="content-main">
+    
+    <div class="content-main-head">
+
+        <div id="inside-box">
+            <h1 id="motto">Glory To Mankind</h1>
+            <h1 id="app-name-header">@Model.app_name</h1>
+        </div>
+    </div>
+
+    <div class="content-main-body">
+
+        <div class="app-detail-box">
+            <ul id="list1">
+                <li class="li-top">
+                    <strong>Category</strong>
+                    <span class="span-list-element">
+                        @((Sort.Cat)Model.cat_code)
+                    </span>
+                </li>
+                <li class="li-mid">
+                    <strong>OS</strong>
+                    <span class="span-list-element">
+                        @((Sort.OS)Model.os_code)
+                    </span>
+                </li>
+                <li class="li-mid">
+                    <strong>Language</strong>
+                    <span class="span-list-element">
+                         @((Sort.Lang)Model.lang_code)
+                    </span>
+                </li>
+                <li class="li-bot">
+                    <strong>Owner</strong>
+                    <span class="span-list-element">
+                        @Model.app_owner
+                    </span>
+                </li>
+            </ul>
+            <ul id="list2">
+                <li class="li-top">
+                    <strong>Size</strong>
+                    <span class="span-list-element">
+                        @Model.app_size
+                    </span>
+                </li>
+                <li class="li-mid">
+                    <strong>Version</strong>
+                    <span class="span-list-element">
+                        @Model.app_version
+                    </span>
+                </li>
+                <li class="li-mid">
+                    <strong>Downloads</strong>
+                    <span class="span-list-element">
+                        @Model.app_install_count
+                    </span>
+                </li>
+                <li class="li-bot">
+                    <strong>License</strong>
+                    <span class="span-list-element">
+                        @((Sort.License)license_code)
+                    </span>
+                </li>
+            </ul>
+        </div>
+
+        <div><p>@Model.app_description</p></div>
+        
+        
+        
+        @{
+            var downloadLink = Html.ActionLink("Download App", "DownloadApp", "Softwares", new { id = Model.app_id, name = Model.app_name }, null);
+        }
+        
+        
+        <div class="download-box"><h2>⇩ · @downloadLink · ⇩</h2></div>
+
+    </div>
+</div>

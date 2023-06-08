@@ -1,0 +1,312 @@
+﻿<!DOCTYPE html>
+@model IEnumerable<IP_Final.Models.Domain.Software>
+@using System.Linq
+@using IP_Final.Lib
+
+@{
+    //Index index = 1;
+    //int topDownload = 0;
+    //var topItem = Model.First();
+    //var array = new IP_Final.Models.Domain.Software[];
+
+    //foreach (var item in Model)
+    //{
+    //    if(item.app_install_count > topDownload)
+    //    {
+    //        topDownload = item.app_install_count;
+    //        topItem = item;
+    //    }  
+    //}
+
+    //var list = (from t in Model
+    //            orderby t.app_install_count
+    //            select t).Take(1);
+    //var topItem = list.First();
+
+    //var secondItem = list.ElementAt(1);
+    //var thirdItem = list.ElementAt(2);
+
+    var osWin = Model.Where(item => item.os_code == 1);
+    //var sortedRows = Model.OrderByDescending(item => item.app_install_count).Take(6);
+    var sortedRows = osWin.OrderByDescending(item => item.app_install_count).Take(13).ToList();
+
+    var osAnd = Model.Where(item => item.os_code == 2);
+    var sortedRowsAnd = osAnd.OrderByDescending(item => item.app_install_count).Take(13).ToList();
+
+    var osIOS = Model.Where(item => item.os_code == 3);
+    var sortedRowsIOS = osIOS.OrderByDescending(item => item.app_install_count).Take(13).ToList();
+
+    //var top = sortedRows.First().app_name;
+    //var sec = sortedRows.ElementAt(1).app_name;
+    //var thi = sortedRows.ElementAt(2).app_name;
+
+    //int i = 3;
+    //Sort.Lang Language;
+    //Language = (Sort.Lang)i;
+
+}
+
+
+<div class="tab-container">
+    <div class="tabs">
+        <button class="tab" onclick="openTab(event, 'tab1')"><img class="res" src="img/logo_win_noselect.png" /><b>Windows</b></button>
+        <button class="tab" onclick="openTab(event, 'tab2')"><img class="res" src="img/logo_android_noselect.png" /><b>Android</b></button>
+        <button class="tab" onclick="openTab(event, 'tab3')"><img class="res" src="img/logo_ios_noselect.png" /><b>iOS</b></button>
+        <h3>Top 13 Popular Apps</h3>
+    </div>
+
+    <div class="tab-content">
+        <div id="tab1" class="tab-item">
+
+            <ul id="tab">
+                <li class="list">
+                    <a asp-action="app" asp-route-id="@sortedRows[0].app_id">@sortedRows[0].app_name</a>
+                    @*<a href="https://www.gezginler.net/indir/nvidia-studio-driver.html" title="Deneme">@sortedRows.First().app_name</a>*@
+                    <span class="left">@sortedRows[0].app_install_count</span>
+                    <span class="left">@((Sort.Lang)sortedRows[0].lang_code)</span>
+                    <span class="left">@sortedRows[0].app_size</span>
+                </li>
+                <li class="list">
+                    <a asp-action="app" asp-route-id="@sortedRows[1].app_id">@sortedRows[1].app_name</a>
+                    <span class="left">@sortedRows[1].app_install_count</span>
+                    <span class="left">@((Sort.Lang)sortedRows[1].lang_code)</span>
+                    <span class="left">@sortedRows[1].app_size</span>
+                </li>
+                <li class="list">
+                    <a asp-action="app" asp-route-id="@sortedRows[2].app_id">@sortedRows[2].app_name</a>
+                    <span class="left">@sortedRows[2].app_install_count</span>
+                    <span class="left">@((Sort.Lang)sortedRows[2].lang_code)</span>
+                    <span class="left">@sortedRows[2].app_size</span>
+                </li>
+                <li class="list">
+                    <a asp-action="app" asp-route-id="@sortedRows[3].app_id">@sortedRows[3].app_name</a>
+                    <span class="left">@sortedRows[3].app_install_count</span>
+                    <span class="left">@((Sort.Lang)sortedRows[3].lang_code)</span>
+                    <span class="left">@sortedRows[3].app_size</span>
+                </li>
+                <li class="list">
+                    <a asp-action="app" asp-route-id="@sortedRows[4].app_id">@sortedRows[4].app_name</a>
+                    <span class="left">@sortedRows[4].app_install_count</span>
+                    <span class="left">@((Sort.Lang)sortedRows[4].lang_code)</span>
+                    <span class="left">@sortedRows[4].app_size</span>
+                </li>
+                <li class="list">
+                    <a asp-action="app" asp-route-id="@sortedRows[5].app_id">@sortedRows[5].app_name</a>
+                    <span class="left">@sortedRows[5].app_install_count</span>
+                    <span class="left">@((Sort.Lang)sortedRows[5].lang_code)</span>
+                    <span class="left">@sortedRows[5].app_size</span>
+                </li>
+                <li class="list">
+                    <a asp-action="app" asp-route-id="@sortedRows[6].app_id">@sortedRows[6].app_name</a>
+                    <span class="left">@sortedRows[6].app_install_count</span>
+                    <span class="left">@((Sort.Lang)sortedRows[6].lang_code)</span>
+                    <span class="left">@sortedRows[6].app_size</span>
+                </li>
+                <li class="list">
+                    <a asp-action="app" asp-route-id="@sortedRows[7].app_id">@sortedRows[7].app_name</a>
+                    <span class="left">@sortedRows[7].app_install_count</span>
+                    <span class="left">@((Sort.Lang)sortedRows[7].lang_code)</span>
+                    <span class="left">@sortedRows[7].app_size</span>
+                </li>
+                <li class="list">
+                    <a asp-action="app" asp-route-id="@sortedRows[8].app_id">@sortedRows[8].app_name</a>
+                    <span class="left">@sortedRows[8].app_install_count</span>
+                    <span class="left">@((Sort.Lang)sortedRows[8].lang_code)</span>
+                    <span class="left">@sortedRows[8].app_size</span>
+                </li>
+                <li class="list">
+                    <a asp-action="app" asp-route-id="@sortedRows[9].app_id">@sortedRows[9].app_name</a>
+                    <span class="left">@sortedRows[9].app_install_count</span>
+                    <span class="left">@((Sort.Lang)sortedRows[9].lang_code)</span>
+                    <span class="left">@sortedRows[9].app_size</span>
+                </li>
+                <li class="list">
+                    <a asp-action="app" asp-route-id="@sortedRows[10].app_id">@sortedRows[10].app_name</a>
+                    <span class="left">@sortedRows[10].app_install_count</span>
+                    <span class="left">@((Sort.Lang)sortedRows[10].lang_code)</span>
+                    <span class="left">@sortedRows[10].app_size</span>
+                </li>
+                <li class="list">
+                    <a asp-action="app" asp-route-id="@sortedRows[11].app_id">@sortedRows[11].app_name</a>
+                    <span class="left">@sortedRows[11].app_install_count</span>
+                    <span class="left">@((Sort.Lang)sortedRows[11].lang_code)</span>
+                    <span class="left">@sortedRows[11].app_size</span>
+                </li>
+                <li class="list">
+                    <a asp-action="app" asp-route-id="@sortedRows[12].app_id">@sortedRows[12].app_name</a>
+                    <span class="left">@sortedRows[12].app_install_count</span>
+                    <span class="left">@((Sort.Lang)sortedRows[12].lang_code)</span>
+                    <span class="left">@sortedRows[12].app_size</span>
+                </li>
+            </ul>
+        </div>
+
+        <div id="tab2" class="tab-item">
+
+            <ul>
+                <li class="list">
+                    <a asp-action="app" asp-route-id="@sortedRowsAnd[0].app_id">@sortedRowsAnd[0].app_name</a>
+                    <span class="left">@sortedRowsAnd[0].app_install_count</span>
+                    <span class="left">@((Sort.Lang)sortedRowsAnd[0].lang_code)</span>
+                    <span class="left">@sortedRowsAnd[0].app_size</span>
+                </li>
+                <li class="list">
+                    <a asp-action="app" asp-route-id="@sortedRowsAnd[1].app_id">@sortedRowsAnd[1].app_name</a>
+                    <span class="left">@sortedRowsAnd[1].app_install_count</span>
+                    <span class="left">@((Sort.Lang)sortedRowsAnd[1].lang_code)</span>
+                    <span class="left">@sortedRowsAnd[1].app_size</span>
+                </li>
+                <li class="list">
+                    <a asp-action="app" asp-route-id="@sortedRowsAnd[2].app_id">@sortedRowsAnd[2].app_name</a>
+                    <span class="left">@sortedRowsAnd[2].app_install_count</span>
+                    <span class="left">@((Sort.Lang)sortedRowsAnd[2].lang_code)</span>
+                    <span class="left">@sortedRowsAnd[2].app_size</span>
+                </li>
+                <li class="list">
+                    <a asp-action="app" asp-route-id="@sortedRowsAnd[3].app_id">@sortedRowsAnd[3].app_name</a>
+                    <span class="left">@sortedRowsAnd[3].app_install_count</span>
+                    <span class="left">@((Sort.Lang)sortedRowsAnd[3].lang_code)</span>
+                    <span class="left">@sortedRowsAnd[3].app_size</span>
+                </li>
+                <li class="list">
+                    <a asp-action="app" asp-route-id="@sortedRowsAnd[4].app_id">@sortedRowsAnd[4].app_name</a>
+                    <span class="left">@sortedRowsAnd[4].app_install_count</span>
+                    <span class="left">@((Sort.Lang)sortedRowsAnd[4].lang_code)</span>
+                    <span class="left">@sortedRowsAnd[4].app_size</span>
+                </li>
+                <li class="list">
+                    <a asp-action="app" asp-route-id="@sortedRowsAnd[1].app_id">@sortedRowsAnd[5].app_name</a>
+                    <span class="left">@sortedRowsAnd[5].app_install_count</span>
+                    <span class="left">@((Sort.Lang)sortedRowsAnd[5].lang_code)</span>
+                    <span class="left">@sortedRowsAnd[5].app_size</span>
+                </li>
+                <li class="list">
+                    <a asp-action="app" asp-route-id="@sortedRowsAnd[6].app_id">@sortedRowsAnd[6].app_name</a>
+                    <span class="left">@sortedRowsAnd[6].app_install_count</span>
+                    <span class="left">@((Sort.Lang)sortedRowsAnd[6].lang_code)</span>
+                    <span class="left">@sortedRowsAnd[6].app_size</span>
+                </li>
+                <li class="list">
+                    <a asp-action="app" asp-route-id="@sortedRowsAnd[7].app_id">@sortedRowsAnd[7].app_name</a>
+                    <span class="left">@sortedRowsAnd[7].app_install_count</span>
+                    <span class="left">@((Sort.Lang)sortedRowsAnd[7].lang_code)</span>
+                    <span class="left">@sortedRowsAnd[7].app_size</span>
+                </li>
+                <li class="list">
+                    <a asp-action="app" asp-route-id="@sortedRowsAnd[8].app_id">@sortedRowsAnd[8].app_name</a>
+                    <span class="left">@sortedRowsAnd[8].app_install_count</span>
+                    <span class="left">@((Sort.Lang)sortedRowsAnd[8].lang_code)</span>
+                    <span class="left">@sortedRowsAnd[8].app_size</span>
+                </li>
+                <li class="list">
+                    <a asp-action="app" asp-route-id="@sortedRowsAnd[9].app_id">@sortedRowsAnd[9].app_name</a>
+                    <span class="left">@sortedRowsAnd[9].app_install_count</span>
+                    <span class="left">@((Sort.Lang)sortedRowsAnd[9].lang_code)</span>
+                    <span class="left">@sortedRowsAnd[9].app_size</span>
+                </li>
+                <li class="list">
+                    <a asp-action="app" asp-route-id="@sortedRowsAnd[10].app_id">@sortedRowsAnd[10].app_name</a>
+                    <span class="left">@sortedRowsAnd[10].app_install_count</span>
+                    <span class="left">@((Sort.Lang)sortedRowsAnd[10].lang_code)</span>
+                    <span class="left">@sortedRowsAnd[10].app_size</span>
+                </li>
+                <li class="list">
+                    <a asp-action="app" asp-route-id="@sortedRowsAnd[11].app_id">@sortedRowsAnd[11].app_name</a>
+                    <span class="left">@sortedRowsAnd[11].app_install_count</span>
+                    <span class="left">@((Sort.Lang)sortedRowsAnd[11].lang_code)</span>
+                    <span class="left">@sortedRowsAnd[11].app_size</span>
+                </li>
+                <li class="list">
+                    <a asp-action="app" asp-route-id="@sortedRowsAnd[12].app_id">@sortedRowsAnd[12].app_name</a>
+                    <span class="left">@sortedRowsAnd[12].app_install_count</span>
+                    <span class="left">@((Sort.Lang)sortedRowsAnd[12].lang_code)</span>
+                    <span class="left">@sortedRowsAnd[12].app_size</span>
+                </li>
+            </ul>
+        </div>
+
+        <div id="tab3" class="tab-item">
+
+            <ul>
+                <li class="list">
+                    <a asp-action="app" asp-route-id="@sortedRowsIOS[0].app_id">@sortedRowsIOS[0].app_name</a>
+                    <span class="left">@sortedRowsIOS[0].app_install_count</span>
+                    <span class="left">@((Sort.Lang)sortedRowsIOS[0].lang_code)</span>
+                    <span class="left">@sortedRowsIOS[0].app_size</span>
+                </li>
+                <li class="list">
+                    <a asp-action="app" asp-route-id="@sortedRowsIOS[1].app_id">@sortedRowsIOS[1].app_name</a>
+                    <span class="left">@sortedRowsIOS[1].app_install_count</span>
+                    <span class="left">@((Sort.Lang)sortedRowsIOS[1].lang_code)</span>
+                    <span class="left">@sortedRowsIOS[1].app_size</span>
+                </li>
+                <li class="list">
+                    <a asp-action="app" asp-route-id="@sortedRowsIOS[2].app_id">@sortedRowsIOS[2].app_name</a>
+                    <span class="left">@sortedRowsIOS[2].app_install_count</span>
+                    <span class="left">@((Sort.Lang)sortedRowsIOS[2].lang_code)</span>
+                    <span class="left">@sortedRowsIOS[2].app_size</span>
+                </li>
+                <li class="list">
+                    <a asp-action="app" asp-route-id="@sortedRowsIOS[3].app_id">@sortedRowsIOS[3].app_name</a>
+                    <span class="left">@sortedRowsIOS[3].app_install_count</span>
+                    <span class="left">@((Sort.Lang)sortedRowsIOS[3].lang_code)</span>
+                    <span class="left">@sortedRowsIOS[3].app_size</span>
+                </li>
+                <li class="list">
+                    <a asp-action="app" asp-route-id="@sortedRowsIOS[4].app_id">@sortedRowsIOS[4].app_name</a>
+                    <span class="left">@sortedRowsIOS[4].app_install_count</span>
+                    <span class="left">@((Sort.Lang)sortedRowsIOS[4].lang_code)</span>
+                    <span class="left">@sortedRowsIOS[4].app_size</span>
+                </li>
+                <li class="list">
+                    <a asp-action="app" asp-route-id="@sortedRowsIOS[5].app_id">@sortedRowsIOS[5].app_name</a>
+                    <span class="left">@sortedRowsIOS[5].app_install_count</span>
+                    <span class="left">@((Sort.Lang)sortedRowsIOS[5].lang_code)</span>
+                    <span class="left">@sortedRowsIOS[5].app_size</span>
+                </li>
+                <li class="list">
+                    <a asp-action="app" asp-route-id="@sortedRowsIOS[6].app_id">@sortedRowsIOS[6].app_name</a>
+                    <span class="left">@sortedRowsIOS[6].app_install_count</span>
+                    <span class="left">@((Sort.Lang)sortedRowsIOS[6].lang_code)</span>
+                    <span class="left">@sortedRowsIOS[6].app_size</span>
+                </li>
+                <li class="list">
+                    <a asp-action="app" asp-route-id="@sortedRowsIOS[7].app_id">@sortedRowsIOS[7].app_name</a>
+                    <span class="left">@sortedRowsIOS[7].app_install_count</span>
+                    <span class="left">@((Sort.Lang)sortedRowsIOS[7].lang_code)</span>
+                    <span class="left">@sortedRowsIOS[7].app_size</span>
+                </li>
+                <li class="list">
+                    <a asp-action="app" asp-route-id="@sortedRowsIOS[8].app_id">@sortedRowsIOS[8].app_name</a>
+                    <span class="left">@sortedRowsIOS[8].app_install_count</span>
+                    <span class="left">@((Sort.Lang)sortedRowsIOS[8].lang_code)</span>
+                    <span class="left">@sortedRowsIOS[8].app_size</span>
+                </li>
+                <li class="list">
+                    <a asp-action="app" asp-route-id="@sortedRowsIOS[9].app_id">@sortedRowsIOS[9].app_name</a>
+                    <span class="left">@sortedRowsIOS[9].app_install_count</span>
+                    <span class="left">@((Sort.Lang)sortedRowsIOS[9].lang_code)</span>
+                    <span class="left">@sortedRowsIOS[9].app_size</span>
+                </li>
+                <li class="list">
+                    <a asp-action="app" asp-route-id="@sortedRowsIOS[10].app_id">@sortedRowsIOS[10].app_name</a>
+                    <span class="left">@sortedRowsIOS[10].app_install_count</span>
+                    <span class="left">@((Sort.Lang)sortedRowsIOS[10].lang_code)</span>
+                    <span class="left">@sortedRowsIOS[10].app_size</span>
+                </li>
+                <li class="list">
+                    <a asp-action="app" asp-route-id="@sortedRowsIOS[11].app_id">@sortedRowsIOS[11].app_name</a>
+                    <span class="left">@sortedRowsIOS[11].app_install_count</span>
+                    <span class="left">@((Sort.Lang)sortedRowsIOS[11].lang_code)</span>
+                    <span class="left">@sortedRowsIOS[11].app_size</span>
+                </li>
+                <li class="list">
+                    <a asp-action="app" asp-route-id="@sortedRowsIOS[12].app_id">@sortedRowsIOS[12].app_name</a>
+                    <span class="left">@sortedRowsIOS[12].app_install_count</span>
+                    <span class="left">@((Sort.Lang)sortedRowsIOS[12].lang_code)</span>
+                    <span class="left">@sortedRowsIOS[12].app_size</span>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,23 @@
+﻿@model IP_Final.Models.Domain.DenemeTable
+@{
+    //Layout = "_Layout";
+}
+<div class="mt-2" style="width:50%">
+<form asp-action="AddDeneme">
+    <h2>Add Deneme</h2>
+    <div class="mb-3">
+            <label asp-for="deneme_name" class="form-label">Name</label>
+            <input asp-for="deneme_name" type="text" class="form-control">
+            <span class="text-danger" asp-validation-for="deneme_name"></span>
+    </div>
+         
+        @if (TempData["msg"] != null)
+        {
+            <div class="mb-3">
+               @TempData["msg"]
+            </div>
+        }   
+        <button type="submit" class="btn btn-primary">Submit</button>
+    <a href="/Person/DisplayPersons" class="btn btn-primary">All Persons</a>
+</form>
+</div>

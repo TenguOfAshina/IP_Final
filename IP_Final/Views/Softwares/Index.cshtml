@@ -1,0 +1,93 @@
+﻿@model IEnumerable<IP_Final.Models.Domain.Software>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create" >Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                App Name
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.app_version)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.app_description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.app_size)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.app_owner)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.app_install_count)
+            </th>
+            <th>
+                @*@Html.DisplayNameFor(model => model.Language)*@
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td class="new-td">
+                @Html.DisplayFor(modelItem => item.app_name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.app_version)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.app_description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.app_size)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.app_owner)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.app_install_count)
+            </td>
+            <td>
+
+                    @{
+                        int langInt = item.lang_code;
+                        string output;
+
+                        switch (langInt)
+                        {
+                            case 1:
+                                output = "Turkish";
+                                break;
+                            case 2:
+                                output = "English";
+                                break;
+                            default:
+                                output = "Unspecified";
+                                break;
+                        }
+                    }
+                @output
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.app_id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.app_id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.app_id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+
+
+                    
+                    

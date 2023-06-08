@@ -1,0 +1,41 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+@*Html.ActionLink("Download", "Download")*@
+<body>
+    
+    
+    @*<div id="frame">*@
+
+        <div id="banner" class="radius r_topleft">
+            <div id="logo"><a href="https://www.gezginler.net" title="Gezginler program oyun indir"><img src="https://www.gezginler.net/images/gezginler-logo.png" class="logo" alt="Gezginler program oyun indir"></a></div>
+        </div>
+        
+        <!-- Tab links -->
+        <div class="tab">
+            <button class="tablinks" onclick="openOS(event, 'Windows')">Windows</button>
+            <button class="tablinks" onclick="openOS(event, 'iOS')">iOS</button>
+            <button class="tablinks" onclick="openOS(event, 'Android')">Android</button>
+        </div>
+
+        <!-- Tab content -->
+        <div id="Windows" class="tabcontent">
+            <h3>London</h3>
+            <p>London is the capital city of England.</p>
+        </div>
+
+        <div id="iOS" class="tabcontent">
+            <h3>Paris</h3>
+            <p>Paris is the capital of France.</p>
+        </div>
+
+        <div id="Android" class="tabcontent">
+            <h3>Tokyo</h3>
+            <p>Tokyo is the capital of Japan.</p>
+        </div>
+
+    @*</div>*@
+</body>
+
+
